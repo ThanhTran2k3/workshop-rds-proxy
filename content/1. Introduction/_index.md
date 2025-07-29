@@ -1,97 +1,210 @@
 ---
-title : "1. Introduction"
-date : 2025-07-03
-weight : 1
-chapter : false
-pre : " <b> 1. </b> "
+title: "Introduction"
+date: 2025-07-03
+weight: 1
+chapter: false
+pre: " <b> 1. </b> "
 ---
 
-**Content:**
-- [Create an AWS account](#create-an-aws-account)
-- [Add payment method](#add-payment-method)
-- [Verify your phone number](#verify-your-phone-number)
-- [Select Support Plan](#select-support-plan)
-- [Wait for your account to be activated](#wait-for-your-account-to-be-activated)
-- [Important](#important)
-- [Warning](#warning)
+### 1. Overview
 
-#### Create an AWS account
+**Amazon RDS Proxy** is a fully managed database proxy service by AWS, designed to optimize connections to **Amazon RDS** and **Amazon Aurora**. This service helps applications:
 
-1. Go to the [Amazon Web Service homepage](https://aws.amazon.com/) page.
-2. Select **Create an AWS Account** in the upper right corner.
-    - ***Note:** If you don't see **Create an AWS Account**, select **Sign In to the Console** then select **Create a new AWS Account**.*
+- Improve database access performance.
+- Optimize connection reuse (connection pooling).
+- Reduce latency in serverless environments like AWS Lambda.
+- Increase availability and failover resilience.
 
-![Create Account](/images/1/0001.png?featherlight=false&width=90pc)
+---
 
-3. Enter email information and **AWS account name**
+### 2. How It Works
 
-![Create Account](/images/1/0002.png?featherlight=false&width=90pc)
+RDS Proxy operates as an intelligent intermediary layer between applications and databases:
 
+- **Connection Pooling**: RDS Proxy maintains a pool of connections to the backend database.
+- When applications request access, RDS Proxy will reuse existing connections if available, or open new ones if needed.
+- RDS Proxy manages connection lifetime, failover, and opening/closing connections based on system status.
 
-4. Complete information.
+---
 
-![Create Account](/images/1/0003.png?featherlight=false&width=90pc)
+### 3. Key Features
 
-5. Confirm the code sent from the email.
+| Feature                              | Description                                                           |
+|--------------------------------------|-----------------------------------------------------------------------|
+| 🔁 Connection pooling               | Reduces concurrent database connections, avoiding connection limits    |
+| ⚡ Lambda/Container optimization     | Reduces latency when connecting to databases in serverless environments |
+| 🔐 IAM & TLS integration            | Strong security with IAM, Secrets Manager, and TLS encryption        |
+| 🛡️ Automatic failover              | Supports automatic database backend switching during failures         |
+| 📊 Monitoring integration           | Integrates with CloudWatch for performance monitoring                 |
 
-![Create Account](/images/1/0004.png?featherlight=false&width=90pc)
+---
 
-![Create Account](/images/1/0005.png?featherlight=false&width=90pc)
+### 4. Pricing and Regional Availability & Versions
 
-![Create Account](/images/1/0006.png?featherlight=false&width=90pc)
+#### 💰 Pricing
+Amazon RDS Proxy pricing is based on:
 
-6. After successful email authentication. You complete the account information.
+- **Number of vCPUs** used by the proxy
+- **Runtime** of the proxy (per hour)
+- No additional charges based on number of connections or requests
+- You still pay standard charges for Amazon RDS or Aurora
 
-![Create Account](/images/1/0007.png?featherlight=false&width=90pc)
+> 📘 [View detailed pricing](https://aws.amazon.com/rds/proxy/pricing/)
 
+---
 
-![Create Account](/images/1/0008.png?featherlight=false&width=90pc)
+### 5. Quotas and Limits for RDS Proxy
 
-7. Complete the account registration documents.
+| Item                                 | Default                  |
+|--------------------------------------|--------------------------|
+| Number of Proxies per account       | 20                       |
+| Target groups per Proxy             | 20                       |
+| Database instances per Proxy        | 1                        |
+| Endpoints per Proxy                 | 1                        |
+| Connection acquisition timeout      | 120 seconds (adjustable) |
+| Concurrent connections supported    | Thousands (auto scale)   |
 
-- You can choose **Personal** or **Business** account
+> You can request limit increases through AWS Support if needed.
 
-![Create Account](/images/1/0009.png?featherlight=false&width=90pc)
+#### Additional Limitations for RDS for MariaDB
 
-#### Add payment method
+Limitations when using Amazon RDS Proxy with RDS for MariaDB:
 
-- Enter your credit card information and select **Verify and Add**.
-    - ***Note**: You can choose a different address for your account by selecting **Use a new address** before **Verify and Add**.*
+- Proxy only listens on **port 3306**, but still connects to the database using the configured port.
+- ❌ Does not support self-managed MariaDB on EC2.
+- ❌ Does not work if `read_only = 1` in the database parameter group.
+- ❌ Does not support **MariaDB compression** (`--compress`, `-C`).
+- ❌ Does not support `auth_ed25519` authentication plugin.
+- ❌ Does not support **TLS 1.3**.
+- ⚠️ `GET DIAGNOSTICS` may return incorrect results if RDS Proxy reuses connections.
+- ❌ Does not support `caching_sha2_password` (via ClientPasswordAuthType).
+- ⚠️ Should not use `sql_auto_is_null = true` in proxy initialization queries — may cause application errors.
 
-![Create Account](/images/1/00010.png?featherlight=false&width=90pc)
-#### Verify your phone number
+---
 
-1. Enter the phone number.
-2. Enter the security check code then select **Call me now**.
-3. AWS will contact and verify account opening.
+#### Additional Limitations for RDS for Microsoft SQL Server
 
-![Create Account](/images/1/00011.png?featherlight=false&width=90pc)
+Limitations when using RDS Proxy with RDS for SQL Server:
 
-#### Select Support Plan
+- ⚠️ Number of **Secrets** in AWS Secrets Manager may be high if SQL Server uses case-sensitive collation.
+- ❌ Does not support connections using **Active Directory**.
+- ❌ IAM authentication does not work with clients that don't support token attributes.
+- ⚠️ System variables like `@@IDENTITY`, `@@ROWCOUNT`, `SCOPE_IDENTITY()` may return incorrect values if not retrieved within the same statement session.
+- ❌ If using **MARS (Multiple Active Result Sets)**, proxy will not execute initialization queries.
+- ❌ Does not support **SQL Server 2014** and **SQL Server 2022** versions.
+- ❌ Does not support clients that cannot handle multiple TLS messages in one record.
 
-- In the **Select a support plan** page, select an effective plan, to compare plans, see [Compare AWS Support Plans](https://aws.amazon.com/premiumsupport/plans/ ).
+---
 
-#### Wait for your account to be activated
+#### Additional Limitations for RDS for MySQL
 
-- After selecting **Support plan**, the account is usually activated after a few minutes, but the process can take up to 24 hours. You will still be able to log in to your AWS account at this time, the AWS Home page may show a “Complete Sign Up” button during this time, even if you have completed all the steps in the registration section.
-- After receiving an email confirming your account has been activated, you can access all AWS services.       
-  
-#### Important
+Limitations when using Amazon RDS Proxy with RDS for MySQL:
 
-The following AWS Identity and Access Management (IAM) actions will reach the end of standard support on July 2023: `aws-portal:ModifyAccount` and `aws-portal:ViewAccount`. See the [Using fine-grained AWS Billing actions](link_to_documentation) to replace these actions with fine-grained actions so you have access to AWS Billing, AWS Cost Management, and AWS accounts consoles.
+- Proxy only listens on **port 3306**.
+- ❌ Does not support self-managed MySQL on EC2.
+- ❌ Does not work if `read_only = 1` in the database parameter group.
+- ❌ Does not support **MySQL compression** (`--compress`, `-C`).
+- ❌ Does not support MySQL **dual password**.
+- ❌ Does not support clients that cannot handle multiple responses in one TLS record.
+- ⚠️ `GET DIAGNOSTICS` may return incorrect results when reusing connections.
+- ⚠️ Some statements like `SET LOCAL` may change session state without causing pinning.
+- ❌ `ROW_COUNT()` does not work correctly with multi-statement queries.
+- ⚠️ With MySQL 8.4 C driver, `mysql_stmt_bind_named_param()` may create error packets if parameter count exceeds placeholders.
+- ⚠️ `caching_sha2_password` requires TLS and may have issues with Go driver (`go-sql`).
+- ⚠️ Should not use `sql_auto_is_null = true` in initialization queries.
 
-If you created your AWS account or AWS Organizations Management account before March 6, 2023, the fine-grained actions will be effective starting July 2023. We recommend you to add the fine-grained actions, but not remove your existing permissions with `aws-portal` or `purchase-orders` prefixes.
+---
 
-If you created your AWS account or AWS Organizations Management account on or after March 6, 2023, the fine-grained actions are effective immediately.
+#### Additional Limitations for RDS for PostgreSQL
 
-AWS assigns the following unique identifiers to each AWS account:
+Limitations when using Amazon RDS Proxy with RDS for PostgreSQL:
 
-- **AWS account ID**: A 12-digit number, such as `012345678901`, that uniquely identifies an AWS account. Many AWS resources include the account ID in their Amazon Resource Names (ARNs). The account ID portion distinguishes resources in one account from the resources in another account. If you're an AWS Identity and Access Management (IAM) user, you can sign in to the AWS Management Console using either the account ID or account alias. While account IDs, like any identifying information, should be used and shared carefully, they are not considered secret, sensitive, or confidential information.
+- Proxy only listens on **port 5432**.
+- ❌ Does not support `CancelRequest` command from client (like Ctrl+C in `psql`).
+- ⚠️ `lastval` results may be inaccurate — should use `INSERT ... RETURNING`.
+- ❌ Does not support **streaming replication**.
+- ⚠️ `scram_iterations` defaults to 4096 when client auth with proxy (PostgreSQL 16).
+- ⚠️ Requires a default database.
+- ⚠️ If using `ALTER ROLE ... SET ROLE`, need to set `SET ROLE` again in initialization query to avoid pinning errors.
+- ❌ Does not support session pinning filters for PostgreSQL.
 
-- **Canonical user ID**: An alpha-numeric identifier, such as `79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be`, that is an obfuscated form of the AWS account ID. You can use this ID to identify an AWS account when granting cross-account access to buckets and objects using Amazon Simple Storage Service (Amazon S3). You can retrieve the canonical user ID for your AWS account as either the root user or an IAM user.
+---
 
-You must be authenticated with AWS to view these identifiers.
+> ✅ **Note:** Limitations may change over time. Refer to the official [Amazon RDS Proxy documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html) for updates.
 
-#### Warning
+---
 
-**Do not provide your AWS credentials** (including passwords and access keys) to a third party that needs your AWS account identifiers to share AWS resources with you. Doing so would give them the same access to the AWS account that you have.
+### 6. RDS Proxy Concepts and Terminology
+
+| Term              | Description                                                           |
+|-------------------|-----------------------------------------------------------------------|
+| **Proxy endpoint** | Address that applications use instead of the original database endpoint |
+| **Connection pool** | Group of pre-opened connections to serve multiple clients           |
+| **Target group**  | Group of database instances associated with a Proxy                 |
+| **IAM Role**      | Role assigned to grant Proxy access from Lambda or EC2              |
+| **Secrets Manager** | Service for securely storing database login credentials             |
+
+---
+
+### 7. Security
+
+Amazon RDS Proxy integrates multiple security layers:
+
+- **IAM Authentication**: Applications authenticate using IAM roles, no need for hard-coded passwords.
+- **TLS Encryption**: Encrypts entire transmission path from client → proxy → backend database.
+- **Secrets Manager**: Manages, rotates, and protects login credentials.
+- **VPC Integration**: Operates within Virtual Private Cloud (VPC), limiting access to internal networks.
+
+---
+
+### 8. Notes
+
+- RDS Proxy **does not replace the database**, but serves as an intermediary layer for performance and security enhancement.
+- Proxy must be **in the same VPC** as RDS or Aurora.
+- Does not support all database versions or configurations (Oracle, SQL Server).
+- Works best with applications using **short-term, high-concurrency connections** like Lambda or microservices.
+- Should not use RDS Proxy if applications have **few connections** and **long-term persistent connections**.
+
+### 9. Integration with Other AWS Services
+
+Amazon RDS Proxy works efficiently when integrated with other AWS services:
+
+| Service             | Primary Integration Role                                                   |
+|---------------------|---------------------------------------------------------------------------|
+| **AWS Lambda**      | Short-term, high-scale connections — reduces cold start and timeout when accessing database |
+| **Amazon ECS / EKS** | Supports stable and secure database access via proxy from containers     |
+| **Amazon CloudWatch** | Monitors metrics like `ConnectionCount`, `CurrentClientConnections`    |
+| **AWS Secrets Manager** | Automatically rotates and protects authentication credentials         |
+| **AWS IAM**         | IAM role-based authentication instead of hard-coded passwords           |
+
+---
+
+### 10. Monitoring Metrics (CloudWatch Metrics)
+
+RDS Proxy provides several **important CloudWatch metrics** for monitoring and diagnosing performance:
+
+| Metric                               | Meaning                                                                 |
+|--------------------------------------|-------------------------------------------------------------------------|
+| `DatabaseConnections`               | Number of connections to backend database currently in use              |
+| `ClientConnections`                 | Number of client connections to proxy                                   |
+| `CurrentSessionPercent`            | Percentage of sessions in use out of total possible                     |
+| `DatabaseConnectionBorrowTimeouts` | Number of times clients failed to acquire connection within timeout     |
+| `ActiveConnections`                | Total number of actively used connections                               |
+
+> 👉 You can set up **automatic alerts** based on these metrics using Amazon **CloudWatch Alarms** for proactive monitoring and timely response to performance issues.
+
+---
+
+### 11. Best Practices for Using RDS Proxy
+
+To achieve maximum performance and ensure stability when using Amazon RDS Proxy, you should apply the following practices:
+
+- ✅ **Design applications to use short-term connections**: Avoid holding database connections unnecessarily long.
+- ✅ **Use IAM or Secrets Manager**: Avoid hard-coding credentials in source code.
+- ✅ **Regularly monitor CloudWatch metrics**: To detect issues in a timely manner.
+- ✅ **Optimize database parameter configuration** in Parameter Group: such as connection timeout, autocommit,...
+- ✅ **Configure initialization queries clearly** to ensure each connection starts with the desired state.
+
+> 💡 Good design of initialization queries and connection state control helps reduce connection pinning and improves connection reuse efficiency.
+
+---

@@ -1,5 +1,5 @@
 ---
-title: "Overview of Amazon RDS Proxy"
+title: "Amazon RDS Proxy"
 date: 2025-07-04
 draft: false
 categories: ["AWS Services", "Database Optimization"]

@@ -1,42 +1,79 @@
 ---
-title : "MFA cho Tài khoản AWS"
-date :  2025-07-03
+title : "Các Bước Chuẩn Bị"
+date : 2025-07-03
 weight : 2
 chapter : false
 pre : " <b> 2. </b> "
 ---
 
-#### Hướng dẫn Thiết lập Multi-Factor Authentication (MFA)
+#### Thiết Lập Môi Trường AWS
 
-Trong quy trình bảo mật, việc sử dụng Multi-Factor Authentication (MFA) rất quan trọng. Trong bước này, bạn sẽ sử dụng ba loại thiết bị MFA khác nhau để tăng cường tính bảo mật.
+![Sơ đồ kiến trúc tổng thể](/images/2/awsAttributes.png)
 
-#### Thiết bị MFA ảo trên smartphone
+Tài liệu này hướng dẫn các bước cần thiết để thiết lập hạ tầng AWS trước khi triển khai các dịch vụ như ECS, RDS và RDS Proxy.
 
-Một cách phổ biến để thực hiện MFA là sử dụng các ứng dụng MFA trên điện thoại thông minh. Có ba ứng dụng phổ biến mà bạn có thể sử dụng:
+## Nội Dung
 
-1. Microsoft Authenticator
-2. Google Authenticator
-3. Okta Verify
+- [1. Tạo VPC & Subnet](#1-tạo-vpc--subnet)
+- [2. Tạo Internet Gateway & NAT Gateway](#2-tạo-internet-gateway--nat-gateway)
+- [3. Tạo Security Groups](#3-tạo-security-groups)
+- [4. Tạo RDS Instance](#4-tạo-rds-instance)
+- [5. Sử Dụng Secrets Manager](#5-sử-dụng-secrets-manager)
+- [6. Gán IAM Role](#6-gán-iam-role)
 
-Để cài đặt MFA với các ứng dụng này, bạn cần thực hiện các bước sau:
+---
 
-1. Tải và cài đặt ứng dụng từ cửa hàng ứng dụng chính thức của hãng phát triển.
-2. Theo hướng dẫn trong ứng dụng, thêm tài khoản bảo mật bằng cách quét mã QR hoặc nhập mã cung cấp.
+## 1. Tạo VPC & Subnet
 
-#### Khóa bảo mật U2F cứng
+- Bước 1: Tạo một VPC mới với CIDR `10.0.0.0/16`.
+- Bước 2: Tạo hai subnet:
+  - **PublicSubnet1**: dùng cho ALB và NAT Gateway (VD: `10.0.1.0/24`)
+  - **PrivateSubnet1**: dùng cho ECS, RDS và RDS Proxy (VD: `10.0.2.0/24`)
 
-Khóa bảo mật U2F (Universal 2nd Factor) cung cấp một lớp bảo mật bổ sung thông qua cổng USB. Để cài đặt khóa bảo mật U2F, bạn cần thực hiện các bước sau:
+---
 
-1. Mua khóa bảo mật U2F tương thích với hệ thống của bạn.
-2. Kết nối khóa vào cổng USB của máy tính.
-3. Theo hướng dẫn của hãng sản xuất, thực hiện quá trình đăng ký và cài đặt.
+## 2. Tạo Internet Gateway & NAT Gateway
 
-#### Thiết bị MFA phần cứng khác
+- Bước 1: Tạo và gắn Internet Gateway (IGW) vào VPC.
+- Bước 2: Tạo NAT Gateway trong `PublicSubnet1`, gán Elastic IP.
+- Bước 3: Cấu hình bảng định tuyến:
+  - Subnet public → IGW để truy cập Internet trực tiếp.
+  - Subnet private → NAT Gateway để truy cập Internet gián tiếp.
 
-Ngoài các tùy chọn trên, còn có các thiết bị MFA phần cứng khác như khóa bảo mật Gemalto. Để sử dụng các thiết bị này, bạn cần tuân thủ hướng dẫn cụ thể từ nhà sản xuất.
+---
 
-#### Liên kết nhanh đến các phần hướng dẫn chi tiết
+## 3. Tạo Security Groups
 
-1. [Thiết lập với thiết bị MFA ảo](#1-virtual-mfa-device)
-2. [Thiết lập với Khóa Bảo mật U2F](#2-u2f-security-key)
-3. [Thiết lập với thiết bị MFA phần cứng khác](#3-other-hardware-mfa-device)
+- Bước 1: Tạo SG-ALB cho phép truy cập HTTP/HTTPS (cổng 80/443) từ Internet.
+- Bước 2: Tạo SG-ECS cho phép ALB truy cập vào ECS (cổng 3000, 8080).
+- Bước 3: Tạo SG-RDSProxy cho phép ECS truy cập RDS Proxy (cổng 3306, 5432).
+- Bước 4: Tạo SG-RDS chỉ cho phép Proxy truy cập Database.
+
+---
+
+## 4. Tạo RDS Instance
+
+- Bước 1: Chọn loại cơ sở dữ liệu (MySQL, PostgreSQL hoặc Aurora).
+- Bước 2: Triển khai DB trong `PrivateSubnet1`.
+- Bước 3: Gán Security Group SG-RDS và (tùy chọn) bật xác thực IAM.
+
+---
+
+## 5. Sử Dụng Secrets Manager
+
+- Bước 1: Tạo secret trong AWS Secrets Manager để lưu thông tin đăng nhập DB dưới dạng JSON.
+- Bước 2: Ghi lại ARN của secret để sử dụng trong cấu hình ECS Task.
+
+---
+
+## 6. Gán IAM Role
+
+- Bước 1: Tạo IAM role (ví dụ: `ecsTaskExecutionRole`).
+- Bước 2: Gán policy cho phép:
+  - Truy cập Secrets Manager
+  - Kết nối tới RDS Database
+  - Ghi log lên CloudWatch
+
+---
+
+Hãy đảm bảo các thành phần trên được cấu hình đầy đủ trước khi tiến hành triển khai ECS và thiết lập kết nối đến RDS Proxy.

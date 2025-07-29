@@ -1,61 +1,79 @@
 ---
-title : "MFA for AWS Accounts"
+title : "Prerequisite Steps"
 date : 2025-07-03
 weight : 2
 chapter : false
 pre : " <b> 2. </b> "
 ---
 
-#### Multi-Factor Authentication (MFA) Setup
+#### AWS Environment Setup
 
-During the authentication process, you will need to utilize three different MFA devices to ensure the security of your account.
+   ![Sơ đồ kiến trúc tổng thể](/images/2/awsAttributes.png)
 
-1. **Virtual MFA Devices (Smartphone Apps)**: Install the following apps on your smartphone and set them up for MFA:
-   - Microsoft Authenticator
-   - Google Authenticator
-   - Okta Verify
-
-2. **Hard U2F Security Key**: Obtain a hard U2F security key to enhance your account's security.
-
-3. **Other Hardware MFA Devices (e.g., Gemalto Security Keys)**: Consider using additional hardware MFA devices for added protection.
+This guide outlines the necessary infrastructure setup steps before deploying services like ECS, RDS, and RDS Proxy.
 
 ## Content
 
-- [Content](#content)
-- [1. Setup with Virtual MFA Device](#1-setup-with-virtual-mfa-device)
-- [2. Setup with U2F Security Key](#2-setup-with-u2f-security-key)
-- [3. Setup with Other Hardware MFA Device](#3-setup-with-other-hardware-mfa-device)
+- [1. Create VPC & Subnet](#1-create-vpc--subnet)
+- [2. Create Internet Gateway & NAT Gateway](#2-create-internet-gateway--nat-gateway)
+- [3. Create Security Groups](#3-create-security-groups)
+- [4. Create RDS Instance](#4-create-rds-instance)
+- [5. Using Secrets Manager](#5-using-secrets-manager)
+- [6. Assign IAM Role](#6-assign-iam-role)
 
 ---
 
-## 1. Setup with Virtual MFA Device
+## 1. Create VPC & Subnet
 
-To set up your virtual MFA device using apps on your smartphone, follow these steps:
-
-- Step 1: Install the Microsoft Authenticator, Google Authenticator, and Okta Verify apps on your smartphone.
-- Step 2: Open the app and follow the on-screen instructions to add your account.
-- Step 3: Use the app-generated codes during the MFA authentication process.
-
----
-
-## 2. Setup with U2F Security Key
-
-Setting up your U2F security key involves the following steps:
-
-- Step 1: Obtain a compatible U2F security key.
-- Step 2: Connect the key to your device's USB port.
-- Step 3: During authentication, insert the key and follow the prompts to complete the process.
+- Step 1: Create a new VPC with CIDR block `10.0.0.0/16`.
+- Step 2: Create two subnets:
+  - **PublicSubnet1**: for ALB and NAT Gateway (e.g., `10.0.1.0/24`)
+  - **PrivateSubnet1**: for ECS, RDS, and RDS Proxy (e.g., `10.0.2.0/24`)
 
 ---
 
-## 3. Setup with Other Hardware MFA Device
+## 2. Create Internet Gateway & NAT Gateway
 
-Consider using hardware MFA devices like Gemalto security keys for an extra layer of security:
-
-- Step 1: Acquire a Gemalto security key or a similar hardware device.
-- Step 2: Connect and set up the device as per the manufacturer's instructions.
-- Step 3: Integrate the device into your MFA authentication workflow.
+- Step 1: Create and attach an Internet Gateway (IGW) to the VPC.
+- Step 2: Create a NAT Gateway in `PublicSubnet1`, associate with an Elastic IP.
+- Step 3: Configure route tables:
+  - Public subnet → IGW for outbound internet access.
+  - Private subnet → NAT Gateway to access internet indirectly.
 
 ---
 
-Remember to keep your MFA devices secure and follow best practices to ensure the safety of your account.
+## 3. Create Security Groups
+
+- Step 1: Create SG-ALB to allow HTTP/HTTPS (80/443) from the internet.
+- Step 2: Create SG-ECS to allow traffic from ALB on ports like 3000, 8080.
+- Step 3: Create SG-RDSProxy to allow ECS access on DB ports (3306, 5432).
+- Step 4: Create SG-RDS to allow only RDS Proxy to access the DB.
+
+---
+
+## 4. Create RDS Instance
+
+- Step 1: Choose a database engine (MySQL, PostgreSQL, or Aurora).
+- Step 2: Deploy the DB in `PrivateSubnet1`.
+- Step 3: Attach SG-RDS and (optional) enable IAM authentication.
+
+---
+
+## 5. Using Secrets Manager
+
+- Step 1: Create a secret in AWS Secrets Manager to store DB credentials in JSON format.
+- Step 2: Note the ARN of the secret to reference in ECS Task definitions.
+
+---
+
+## 6. Assign IAM Role
+
+- Step 1: Create an IAM role (e.g., `ecsTaskExecutionRole`).
+- Step 2: Attach a policy allowing:
+  - Access to Secrets Manager
+  - RDS database connection
+  - Logging to CloudWatch
+
+---
+
+Ensure all these components are in place before proceeding to ECS deployment and RDS Proxy connection setup.
