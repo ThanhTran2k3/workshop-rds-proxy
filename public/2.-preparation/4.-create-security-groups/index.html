@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.140.1">
@@ -12,21 +12,21 @@
     <title>Create Security Groups :: Create a new AWS account.</title>
 
     
-    <link href="/css/nucleus.css?1753779095" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1753779095" rel="stylesheet">
-    <link href="/css/hybrid.css?1753779095" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1753779095" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1753779095" rel="stylesheet">
-    <link href="/css/auto-complete.css?1753779095" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1753779095" rel="stylesheet">
-    <link href="/css/theme.css?1753779095" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1753779095" rel="stylesheet">
+    <link href="/css/nucleus.css?1753790679" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1753790679" rel="stylesheet">
+    <link href="/css/hybrid.css?1753790679" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1753790679" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1753790679" rel="stylesheet">
+    <link href="/css/auto-complete.css?1753790679" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1753790679" rel="stylesheet">
+    <link href="/css/theme.css?1753790679" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1753790679" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1753779095" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1753790679" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1753779095"></script>
+    <script src="/js/jquery-3.3.1.min.js?1753790679"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1753779095"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1753779095"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1753790679"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1753790679"></script>
 <script type="text/javascript">
     
-    var baseurl = "\/\/localhost:1313\/";
+    var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1753779095"></script>
+<script type="text/javascript" src="/js/search.js?1753790679"></script>
 
     
   </div>
@@ -285,7 +285,7 @@
         
         ">
       <a href="/2.-preparation/6.-create-secrets-manager/">
-           <b> 2.5 </b> Using Secrets Manager
+           <b> 2.6 </b> Using Secrets Manager
           
             <i class="fas fa-check read-icon"></i>
           
@@ -397,7 +397,7 @@
                   
                     
                     
-                      <option id="en" value="//localhost:1313/2.-preparation/4.-create-security-groups/" selected>English</option>
+                      <option id="en" value="/2.-preparation/4.-create-security-groups/" selected>English</option>
                     
                   
               
@@ -411,7 +411,7 @@
                   
                     
                     
-                      <option id="vi" value="//localhost:1313/vi/2.-preparation/4.-create-security-groups/">Tiếng Việt</option>
+                      <option id="vi" value="/vi/2.-preparation/4.-create-security-groups/">Tiếng Việt</option>
                     
                   
               
@@ -592,97 +592,133 @@
 <h3 id="-step-by-step-instructions">🛠️ Step-by-Step Instructions</h3>
 <h3 id="1-create-sg-alb">1. Create <strong>SG-ALB</strong></h3>
 <ol>
-<li>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0001.png" alt=""></li>
-<li>Enter:
+<li>
+<p>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</p>
+</li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0001.png" alt=""></p>
+</li>
+<li>
+<p>Enter:</p>
 <ul>
 <li><strong>Security group name</strong>: <code>SG-ALB</code></li>
 <li><strong>Description</strong>: <code>Allow HTTP/HTTPS from Internet</code></li>
-<li><strong>VPC</strong>: Select <code>MyApp-VPC</code><br>
-<img src="/images/2.4/0002.png" alt=""></li>
+<li><strong>VPC</strong>: Select <code>MyApp-VPC</code></li>
 </ul>
+<p><img src="/images/2.4/0002.png" alt=""></p>
 </li>
-<li>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:
+<li>
+<p>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:</p>
 <ul>
 <li><strong>Type</strong>: <code>HTTP</code>, <strong>Port</strong>: <code>80</code>, <strong>Source</strong>: <code>0.0.0.0/0</code></li>
 <li><strong>Type</strong>: <code>HTTPS</code>, <strong>Port</strong>: <code>443</code>, <strong>Source</strong>: <code>0.0.0.0/0</code></li>
 </ul>
+<p><img src="/images/2.4/0003.png" alt=""></p>
 </li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0003.png" alt=""><br>
-<img src="/images/2.4/0004.png" alt=""></li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0004.png" alt=""></p>
+</li>
 </ol>
 <hr>
 <h3 id="2-create-sg-ecs">2. Create <strong>SG-ECS</strong></h3>
 <ol>
-<li>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0001.png" alt=""></li>
-<li>Enter:
+<li>
+<p>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</p>
+</li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0001.png" alt=""></p>
+</li>
+<li>
+<p>Enter:</p>
 <ul>
 <li><strong>Security group name</strong>: <code>SG-ECS</code></li>
 <li><strong>Description</strong>: <code>Allow traffic from ALB to ECS</code></li>
-<li><strong>VPC</strong>: Select <code>MyApp-VPC</code><br>
-<img src="/images/2.4/0005.png" alt=""></li>
+<li><strong>VPC</strong>: Select <code>MyApp-VPC</code></li>
 </ul>
+<p><img src="/images/2.4/0005.png" alt=""></p>
 </li>
-<li>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:
+<li>
+<p>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:</p>
 <ul>
 <li><strong>Type</strong>: <code>Custom TCP</code>, <strong>Port</strong>: <code>8080</code>, <strong>Source</strong>: <code>SG-ALB</code></li>
-<li><strong>Type</strong>: <code>Custom TCP</code>, <strong>Port</strong>: <code>8081</code>, <strong>Source</strong>: <code>SG-ALB</code></li>
-<li><strong>Type</strong>: <code>Custom TCP</code>, <strong>Port</strong>: <code>8082</code>, <strong>Source</strong>: <code>SG-ALB</code></li>
 </ul>
+<p><img src="/images/2.4/0006.png" alt=""></p>
 </li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0006.png" alt=""><br>
-<img src="/images/2.4/0004.png" alt=""></li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0004.png" alt=""></p>
+</li>
 </ol>
 <hr>
 <h3 id="3-create-sg-rdsproxy">3. Create <strong>SG-RDSProxy</strong></h3>
 <ol>
-<li>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0001.png" alt=""></li>
-<li>Enter:
+<li>
+<p>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</p>
+</li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0001.png" alt=""></p>
+</li>
+<li>
+<p>Enter:</p>
 <ul>
-<li><strong>Security group name</strong>: <code>SG-RDSProxy</code></li>
-<li><strong>Description</strong>: <code>Allow ECS to access RDS Proxy</code></li>
-<li><strong>VPC</strong>: Select <code>MyApp-VPC</code><br>
-<img src="/images/2.4/0007.png" alt=""></li>
+<li>
+<p><strong>Security group name</strong>: <code>SG-RDSProxy</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>Allow ECS to access RDS Proxy</code></p>
+</li>
+<li>
+<p><strong>VPC</strong>: Select <code>MyApp-VPC</code></p>
+<p><img src="/images/2.4/0007.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:
+<li>
+<p>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:</p>
 <ul>
 <li><strong>Type</strong>: <code>MYSQL/Aurora</code>, <strong>Port</strong>: <code>3306</code>, <strong>Source</strong>: <code>SG-ECS</code></li>
 </ul>
+<p><img src="/images/2.4/0008.png" alt=""></p>
 </li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0008.png" alt=""><br>
-<img src="/images/2.4/0004.png" alt=""></li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0004.png" alt=""></p>
+</li>
 </ol>
 <hr>
 <h3 id="4-create-sg-rds">4. Create <strong>SG-RDS</strong></h3>
 <ol>
-<li>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0001.png" alt=""></li>
-<li>Enter:
+<li>
+<p>Go to <strong>VPC Dashboard</strong> → select <strong>Security Groups</strong> from the left panel.</p>
+</li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0001.png" alt=""></p>
+</li>
+<li>
+<p>Enter:</p>
 <ul>
 <li><strong>Security group name</strong>: <code>SG-RDS</code></li>
 <li><strong>Description</strong>: <code>Allow RDS Proxy to access DB</code></li>
-<li><strong>VPC</strong>: Select <code>MyApp-VPC</code><br>
-<img src="/images/2.4/0009.png" alt=""></li>
+<li><strong>VPC</strong>: Select <code>MyApp-VPC</code></li>
 </ul>
+<p><img src="/images/2.4/0009.png" alt=""></p>
 </li>
-<li>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:
+<li>
+<p>Under <strong>Inbound rules</strong>, click <strong>Add rule</strong>:</p>
 <ul>
 <li><strong>Type</strong>: <code>MYSQL/Aurora</code>, <strong>Port</strong>: <code>3306</code>, <strong>Source</strong>: <code>SG-RDSProxy</code></li>
 </ul>
+<p><img src="/images/2.4/0010.png" alt=""></p>
 </li>
-<li>Click <strong>Create Security Group</strong>.<br>
-<img src="/images/2.4/0010.png" alt=""><br>
-<img src="/images/2.4/0004.png" alt=""></li>
+<li>
+<p>Click <strong>Create Security Group</strong>.</p>
+<p><img src="/images/2.4/0004.png" alt=""></p>
+</li>
 </ol>
 
 
@@ -914,19 +950,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1753779095"></script>
-    <script src="/js/perfect-scrollbar.min.js?1753779095"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1753779095"></script>
-    <script src="/js/jquery.sticky.js?1753779095"></script>
-    <script src="/js/featherlight.min.js?1753779095"></script>
-    <script src="/js/highlight.pack.js?1753779095"></script>
+    <script src="/js/clipboard.min.js?1753790679"></script>
+    <script src="/js/perfect-scrollbar.min.js?1753790679"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1753790679"></script>
+    <script src="/js/jquery.sticky.js?1753790679"></script>
+    <script src="/js/featherlight.min.js?1753790679"></script>
+    <script src="/js/highlight.pack.js?1753790679"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1753779095"></script>
-    <script src="/js/learn.js?1753779095"></script>
-    <script src="/js/hugo-learn.js?1753779095"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1753790679"></script>
+    <script src="/js/learn.js?1753790679"></script>
+    <script src="/js/hugo-learn.js?1753790679"></script>
 
-    <link href="/mermaid/mermaid.css?1753779095" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1753779095"></script>
+    <link href="/mermaid/mermaid.css?1753790679" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1753790679"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

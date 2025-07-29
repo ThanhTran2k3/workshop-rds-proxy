@@ -107,6 +107,19 @@ Tạo một VPC mới với sơ đồ mạng như sau:
    ![](/images/2.1/0011.png) 
    ![](/images/2.1/0012.png) 
 
+##### 4.3 Tạo PrivateSubnet2
+- Vào **VPC Dashboard** > chọn **Subnets**
+- Nhấn **Create subnet**
+   ![](/images/2.1/0008.png) 
+- Nhấn **VPC ID** > chọn **MyApp-VPC**
+- Nhập thông tin:
+    - **Subnet name**: `PrivateSubnet2`
+    - Nhấn **Availability Zone**  > chọn bất kỳ khác với **PrivateSubnet1** **(VD: `ap-southeast-1c`)**
+    - **IPv4 subnet CIDR block**: `10.0.3.0/24`
+- Nhấn **Create subnet**
+   ![](/images/2.1/0015.png) 
+   ![](/images/2.1/0016.png) 
+
 ---
 
 ### ✅ Kết quả đạt được
@@ -114,7 +127,8 @@ Tạo một VPC mới với sơ đồ mạng như sau:
 - Tạo được một VPC tên `MyApp-VPC` với CIDR `10.0.0.0/16`
    ![](/images/2.1/0013.png) 
 - Tạo 1 subnet công khai `PublicSubnet1` dùng cho ALB và NAT Gateway
-- Tạo 1 subnet riêng tư `PrivateSubnet1` dùng cho ECS, RDS, RDS Proxy
+- Tạo 2 subnet riêng tư `PrivateSubnet1`, `PrivateSubnet2` dùng cho ECS, RDS, RDS Proxy
+
    ![](/images/2.1/0014.png) 
 
 ---

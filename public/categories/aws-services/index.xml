@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AWS Services on Create a new AWS account.</title>
-    <link>//localhost:1313/categories/aws-services/</link>
+    <link>/categories/aws-services/</link>
     <description>Recent content in AWS Services on Create a new AWS account.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 04 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/categories/aws-services/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/aws-services/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Amazon RDS Proxy</title>
-      <link>//localhost:1313/</link>
+      <link>/</link>
       <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/</guid>
+      <guid>/</guid>
       <description>&lt;h1 id=&#34;amazon-relational-database-service-proxy-amazon-rds-proxy&#34;&gt;Amazon Relational Database Service Proxy (Amazon RDS Proxy)&lt;/h1&gt;&#xA;&lt;h2 id=&#34;overview-of-amazon-rds-proxy&#34;&gt;Overview of Amazon RDS Proxy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Amazon Relational Database Service Proxy (Amazon RDS Proxy)&lt;/strong&gt; is a fully managed database proxy service for Amazon RDS that helps improve performance, increase availability, and enhance scalability for applications using Amazon RDS or Aurora.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-rds-proxy&#34;&gt;What is RDS Proxy?&lt;/h2&gt;&#xA;&lt;p&gt;RDS Proxy acts as an intermediary layer between applications and Amazon RDS or Aurora. RDS Proxy manages connection pooling to reduce database connection overhead and reuses existing connections to optimize resources and improve application performance.&lt;/p&gt;</description>
     </item>
   </channel>

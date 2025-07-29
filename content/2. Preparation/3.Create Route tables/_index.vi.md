@@ -77,7 +77,7 @@ pre : " <b> 2.3 </b> "
 
   ![](/images/2.3/0012.png) 
 
-  - Click chọn các **PrivateSubnet1**
+  - Click chọn các **PrivateSubnet1**, **PrivateSubnet2**
   - Nhấn **Save associations**
 
   ![](/images/2.3/0013.png) 

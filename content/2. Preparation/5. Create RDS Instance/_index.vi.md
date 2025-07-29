@@ -9,12 +9,35 @@ pre : " <b> 2.5 </b> "
 ### 🛠️ Bước 4: Tạo RDS Database (MySQL)
 
 #### 1. Mở dịch vụ RDS
-- Truy cập **AWS Console**
-- Tìm kiếm và chọn dịch vụ **RDS**
+
+- Tìm kiếm và chọn dịch vụ **Aurora and RDS**
+
+  ![](/images/2.5/0001.png)
 
 ---
 
-#### 2. Tạo cơ sở dữ liệu MySQL
+#### 2. Tạo DB Subnet Group.
+
+- Vào **Aurora and RDS** > chọn **Subnet groups**
+- Nhấn **Create DB subnet group**
+
+  ![](/images/2.5/0002.png)
+
+- Nhập thông tin:
+    - **Name**: `MyApp-RDSSG`
+    - **Description**: `Subnet group for RDS MySQL`
+    - **VPC** > chọn **MyApp-VPC**
+    - **Availability Zone**  > chọn **ap-southeast-1b** và **ap-southeast-1c**
+    - **Subnets**  > chọn **PrivateSubnet1** và **PrivateSubnet2**
+- Nhấn **Create**  
+
+    ![](/images/2.5/0003.png)
+
+    ![](/images/2.5/0004.png)
+
+---
+
+#### 2. Tạo database
 - Trong RDS Dashboard, chọn **Create database**
 
 ---

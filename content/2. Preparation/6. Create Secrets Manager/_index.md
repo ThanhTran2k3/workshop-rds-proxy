@@ -1,9 +1,9 @@
 ---
 title : "Using Secrets Manager"
 date : 2025-07-03
-weight : 5
+weight : 6
 chapter : false
-pre : " <b> 2.5 </b> "
+pre : " <b> 2.6 </b> "
 ---
 
 ## Enabling Multi-Factor Authentication (MFA) on AWS

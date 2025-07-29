@@ -25,17 +25,24 @@ Security Groups (SGs) control inbound and outbound traffic for resources such as
 
 1. Go to **VPC Dashboard** → select **Security Groups** from the left panel.
 2. Click **Create Security Group**.  
+
    ![](/images/2.4/0001.png)
+
 3. Enter:
    - **Security group name**: `SG-ALB`
    - **Description**: `Allow HTTP/HTTPS from Internet`
    - **VPC**: Select `MyApp-VPC`  
-     ![](/images/2.4/0002.png)
+
+   ![](/images/2.4/0002.png)
+
 4. Under **Inbound rules**, click **Add rule**:
    - **Type**: `HTTP`, **Port**: `80`, **Source**: `0.0.0.0/0`
    - **Type**: `HTTPS`, **Port**: `443`, **Source**: `0.0.0.0/0`
-5. Click **Create Security Group**.  
+
    ![](/images/2.4/0003.png)  
+
+5. Click **Create Security Group**.  
+
    ![](/images/2.4/0004.png)
 
 ---
@@ -44,18 +51,23 @@ Security Groups (SGs) control inbound and outbound traffic for resources such as
 
 1. Go to **VPC Dashboard** → select **Security Groups** from the left panel.
 2. Click **Create Security Group**.  
+
    ![](/images/2.4/0001.png)
+
 3. Enter:
    - **Security group name**: `SG-ECS`
    - **Description**: `Allow traffic from ALB to ECS`
-   - **VPC**: Select `MyApp-VPC`  
-     ![](/images/2.4/0005.png)
+   - **VPC**: Select `MyApp-VPC` 
+
+   ![](/images/2.4/0005.png)
+
 4. Under **Inbound rules**, click **Add rule**:
    - **Type**: `Custom TCP`, **Port**: `8080`, **Source**: `SG-ALB`
-   - **Type**: `Custom TCP`, **Port**: `8081`, **Source**: `SG-ALB`
-   - **Type**: `Custom TCP`, **Port**: `8082`, **Source**: `SG-ALB`
-5. Click **Create Security Group**.  
+
    ![](/images/2.4/0006.png)  
+
+5. Click **Create Security Group**.  
+
    ![](/images/2.4/0004.png)
 
 ---
@@ -64,16 +76,22 @@ Security Groups (SGs) control inbound and outbound traffic for resources such as
 
 1. Go to **VPC Dashboard** → select **Security Groups** from the left panel.
 2. Click **Create Security Group**.  
+
    ![](/images/2.4/0001.png)
+
 3. Enter:
    - **Security group name**: `SG-RDSProxy`
    - **Description**: `Allow ECS to access RDS Proxy`
    - **VPC**: Select `MyApp-VPC`  
+
      ![](/images/2.4/0007.png)
+
 4. Under **Inbound rules**, click **Add rule**:
    - **Type**: `MYSQL/Aurora`, **Port**: `3306`, **Source**: `SG-ECS`
-5. Click **Create Security Group**.  
+
    ![](/images/2.4/0008.png)  
+5. Click **Create Security Group**.  
+
    ![](/images/2.4/0004.png)
 
 ---
@@ -82,14 +100,20 @@ Security Groups (SGs) control inbound and outbound traffic for resources such as
 
 1. Go to **VPC Dashboard** → select **Security Groups** from the left panel.
 2. Click **Create Security Group**.  
+
    ![](/images/2.4/0001.png)
+
 3. Enter:
    - **Security group name**: `SG-RDS`
    - **Description**: `Allow RDS Proxy to access DB`
    - **VPC**: Select `MyApp-VPC`  
-     ![](/images/2.4/0009.png)
+
+   ![](/images/2.4/0009.png)
+
 4. Under **Inbound rules**, click **Add rule**:
    - **Type**: `MYSQL/Aurora`, **Port**: `3306`, **Source**: `SG-RDSProxy`
-5. Click **Create Security Group**.  
+
    ![](/images/2.4/0010.png)  
+5. Click **Create Security Group**.  
+
    ![](/images/2.4/0004.png)

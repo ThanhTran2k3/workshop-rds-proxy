@@ -109,12 +109,30 @@ Create a new VPC with the following network structure:
 
 ---
 
+##### 4.3 Create PrivateSubnet1
+- Go to **VPC Dashboard** > select **Subnets**
+- Click **Create subnet**
+   ![](/images/2.1/0008.png) 
+- Under **VPC ID**, select **MyApp-VPC**
+- Fill in the details:
+    - **Subnet name**: `PrivateSubnet2`
+    - **Availability Zone**: Choose any (e.g., `ap-southeast-1b`)
+    - **IPv4 CIDR block**: `10.0.3.0/24`
+- Click **Create subnet**
+   ![](/images/2.1/0015.png) 
+   ![](/images/2.1/0016.png) 
+
+---
+
 ### ✅ Expected Result
 
 - A VPC named `MyApp-VPC` with CIDR `10.0.0.0/16` is created
+
    ![](/images/2.1/0013.png) 
+
 - A public subnet `PublicSubnet1` created for ALB and NAT Gateway
-- A private subnet `PrivateSubnet1` created for ECS, RDS, RDS Proxy
+- Two private subnet `PrivateSubnet1` created for ECS, RDS, RDS Proxy
+ 
    ![](/images/2.1/0014.png) 
 
 ---
