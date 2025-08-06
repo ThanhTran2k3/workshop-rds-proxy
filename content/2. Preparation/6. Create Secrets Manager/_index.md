@@ -1,63 +1,73 @@
 ---
-title : "Using Secrets Manager"
-date : 2025-07-03
+title : "Create Secrets Manager"
+date : 2025-08-07
 weight : 6
 chapter : false
 pre : " <b> 2.6 </b> "
 ---
 
-## Enabling Multi-Factor Authentication (MFA) on AWS
+### 🛠️ Steps to Follow
 
-**Note:** Before proceeding, ensure you are logged in to AWS using the root user.
+#### 1. Open Secrets Manager Service
 
-## Enable Virtual MFA Device through AWS Management Console
+- Search and select **Secrets Manager**
 
-To enhance the security of your AWS account, you can set up Multi-Factor Authentication (MFA). This adds an extra layer of protection by requiring a second form of verification in addition to your password. Follow these steps to set up and activate a virtual MFA device:
+  ![](/images/2.6/0001.png)
 
-1. Sign in to the AWS Management Console.
+---
 
-2. In the upper right corner of the console, you will see your account name. Click on it and select **My Security Credentials**.
+#### 2. Create a Secret
 
-   ![My Security Credentials](/images/2/0001.png?featherlight=false&width=90pc)
+- Go to **AWS Secrets Manager** > select **Secrets**
+- Click **Store a new secret**
 
-3. Expand the **Multi-factor authentication (MFA)** section and select **Assign MFA**.
+  ![](/images/2.6/0002.png)
 
-   ![Assign MFA](/images/2/0002.png?featherlight=false&width=90pc)
+- In the **Choose secret type** step:
+  - **Secret type** > select **Credentials for RDS database**
+  - Under **Credentials**:
+    - **User name**: `admin`
+    - **Password**: `your-password`
 
-4. In the **Select MFA Device** interface:
+  ![](/images/2.6/0003.png)
 
-   - Enter a **Device Name**.
-   - Select **MFA Device** as the **Authenticator App**.
-   - Select **Next**.
+    ✅ **Or** select **Other type of secrets** and manually enter JSON data:
 
-   ![Select MFA Device](/images/2/0003.png?featherlight=false&width=90pc)
+    ```json
+    {
+      "username": "admin",
+      "password": "your-password"
+    }
+    ```
+  - Under **Database**, select **MyApp-RDS**
 
-5. Install a compatible authenticator app on your smartphone. You can find a list of [MFA-compatible apps here](https://aws.amazon.com/iam/features/mfa/?audit=2019q1).
+  - Click **Next** to continue
 
-   ![MFA App List](/images/2/0004.png?featherlight=false&width=90pc)
+  ![](/images/2.6/0004.png)
 
-6. Install the authenticator extension for Google Chrome. Select **Add to Chrome**.
+---
 
-   ![Authenticator Extension](/images/2/0005.png?featherlight=false&width=90pc)
+- In the **Configure secret** step:
+  - **Secret name**: `MyAPP-Secret`
+  - **Description**: `MySQL database credentials`
 
-7. Use the authenticator app to generate an MFA code and enter it for confirmation.
+  ![](/images/2.6/0005.png)
 
-   ![MFA Code](/images/2/0006.png?featherlight=false&width=90pc)
+  - Click **Next** to continue
 
-8. Perform a QR code scan using the authenticator app.
+  ![](/images/2.6/0006.png)
 
-   ![QR Code Scan](/images/2/0007.png?featherlight=false&width=90pc)
+---
 
-9. After scanning the QR code, enter the generated MFA codes into the corresponding fields.
+- In the **Configure rotation** step:
+  - Click **Next** to continue
 
-   ![Enter MFA Codes](/images/2/0008.png?featherlight=false&width=90pc)
+  ![](/images/2.6/0007.png)
+---
 
-10. Once the codes are entered, select **Add MFA** to complete the setup.
+- In the **Review** step:
+  - Click **Store** to create the secret
 
-   ![Add MFA](/images/2/0009.png?featherlight=false&width=90pc)
+  ![](/images/2.6/0008.png)
 
-11. Complete the additional MFA setup steps as prompted.
-
-   ![Additional MFA Setup](/images/2/00010.png?featherlight=false&width=90pc)
-
-By setting up Multi-Factor Authentication, you add an extra layer of security to your AWS account, helping to protect your valuable resources and data.
+---

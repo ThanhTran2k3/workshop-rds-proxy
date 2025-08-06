@@ -1,21 +1,21 @@
 ---
 title: "Create Route Table"
-date: 2025-07-03
-weight: 3
-chapter: false
+date : 2025-08-07
+weight : 3
+chapter : false
 pre: " <b> 2.3 </b> "
 ---
 
-### 🛠️ Steps to Follow
+### 🛠️ Steps to Implement
 
 #### 1. Create Route Table for Public Subnet
 
-- Go to **VPC Dashboard** > **Route Tables**
+- Go to **VPC Dashboard** > select **Route Tables**
 - Click **Create route table**  
 
   ![](/images/2.3/0001.png) 
 
-- Enter:
+- Fill in the details:
   - **Name tag**: `MyApp-Public-RT`
   - **VPC**: select `MyApp-VPC`
 - Click **Create route table**  
@@ -52,7 +52,7 @@ pre: " <b> 2.3 </b> "
 
   ![](/images/2.3/0001.png) 
 
-- Enter:
+- Fill in the details:
   - **Name tag**: `MyApp-Private-RT`
   - **VPC**: select `MyApp-VPC`
 - Click **Create route table**  
@@ -80,3 +80,5 @@ pre: " <b> 2.3 </b> "
   - Click **Save associations** 
 
   ![](/images/2.3/0013.png) 
+
+---

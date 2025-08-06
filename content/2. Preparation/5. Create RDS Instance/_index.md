@@ -1,63 +1,95 @@
 ---
-title : "Create RDS Instance"
-date : 2025-07-03
+title : "Create RDS Database Instance"
+date : 2025-08-07
 weight : 5
 chapter : false
 pre : " <b> 2.5 </b> "
 ---
 
-## Enabling Multi-Factor Authentication (MFA) on AWS
+### 🛠️ Steps to Implement
 
-**Note:** Before proceeding, ensure you are logged in to AWS using the root user.
+#### 1. Open the RDS Service
 
-## Enable Virtual MFA Device through AWS Management Console
+- Search and select **Aurora and RDS** service
 
-To enhance the security of your AWS account, you can set up Multi-Factor Authentication (MFA). This adds an extra layer of protection by requiring a second form of verification in addition to your password. Follow these steps to set up and activate a virtual MFA device:
+  ![](/images/2.5/0001.png)
 
-1. Sign in to the AWS Management Console.
+---
 
-2. In the upper right corner of the console, you will see your account name. Click on it and select **My Security Credentials**.
+#### 2. Create DB Subnet Group
 
-   ![My Security Credentials](/images/2/0001.png?featherlight=false&width=90pc)
+- Go to **Aurora and RDS** > select **Subnet groups**
+- Click **Create DB subnet group**
 
-3. Expand the **Multi-factor authentication (MFA)** section and select **Assign MFA**.
+  ![](/images/2.5/0002.png)
 
-   ![Assign MFA](/images/2/0002.png?featherlight=false&width=90pc)
+- Fill in the details:
+    - **Name**: `MyApp-RDSSG`
+    - **Description**: `Subnet group for RDS MySQL`
+    - **VPC** > select **MyApp-VPC**
+    - **Availability Zone** > select **ap-southeast-1b** and **ap-southeast-1c**
+    - **Subnets** > select **PrivateSubnet1** and **PrivateSubnet2**
+- Click **Create**
 
-4. In the **Select MFA Device** interface:
+  ![](/images/2.5/0003.png)
+  ![](/images/2.5/0004.png)
 
-   - Enter a **Device Name**.
-   - Select **MFA Device** as the **Authenticator App**.
-   - Select **Next**.
+---
 
-   ![Select MFA Device](/images/2/0003.png?featherlight=false&width=90pc)
+#### 3. Create Database
 
-5. Install a compatible authenticator app on your smartphone. You can find a list of [MFA-compatible apps here](https://aws.amazon.com/iam/features/mfa/?audit=2019q1).
+- Go to **Aurora and RDS** > select **Databases**
+- Click **Create database**
 
-   ![MFA App List](/images/2/0004.png?featherlight=false&width=90pc)
+  ![](/images/2.5/0005.png)
 
-6. Install the authenticator extension for Google Chrome. Select **Add to Chrome**.
+- Fill in the details:
+    - **Choose a database creation method** > select **Standard create**
+    - **Engine options**:
+      - **Engine type** > select **MySQL**
 
-   ![Authenticator Extension](/images/2/0005.png?featherlight=false&width=90pc)
+  ![](/images/2.5/0006.png)
 
-7. Use the authenticator app to generate an MFA code and enter it for confirmation.
+    - **Templates** > select **Dev/Test**
 
-   ![MFA Code](/images/2/0006.png?featherlight=false&width=90pc)
+  ![](/images/2.5/0007.png)
 
-8. Perform a QR code scan using the authenticator app.
+    - **Availability and durability**:
+      - **Deployment options** > select **Multi-AZ DB instance deployment (2 instances)**
 
-   ![QR Code Scan](/images/2/0007.png?featherlight=false&width=90pc)
+  ![](/images/2.5/0008.png)
 
-9. After scanning the QR code, enter the generated MFA codes into the corresponding fields.
+    - **Settings**:
+      - **DB instance identifier**: `MyApp-RDS`
+      - **Master username**: `admin`
+      - **Credentials management** > select **Self managed**
+      - Set your own **Master password**
 
-   ![Enter MFA Codes](/images/2/0008.png?featherlight=false&width=90pc)
+  ![](/images/2.5/0009.png)
 
-10. Once the codes are entered, select **Add MFA** to complete the setup.
+    - **Instance configuration**:
+      - **DB instance class** > select **Burstable classes (includes t classes)** > choose **db.t3.micro**
 
-   ![Add MFA](/images/2/0009.png?featherlight=false&width=90pc)
+  ![](/images/2.5/0010.png)
 
-11. Complete the additional MFA setup steps as prompted.
+    - **Storage**:
+      - **Storage type** > select **General Purpose SSD (gp2)**
+      - **Allocated storage**: `20`
 
-   ![Additional MFA Setup](/images/2/00010.png?featherlight=false&width=90pc)
+  ![](/images/2.5/0011.png)
 
-By setting up Multi-Factor Authentication, you add an extra layer of security to your AWS account, helping to protect your valuable resources and data.
+    - **Connectivity**:
+      - **Compute resource** > select **Don’t connect to an EC2 compute resource**
+      - **Virtual private cloud (VPC)** > select **MyApp-VPC**
+      - **DB subnet group** > select **MyApp-RDSSG**
+      - **Existing VPC security groups** > select **SG-RDS**
+
+  ![](/images/2.5/0012.png)
+
+  ![](/images/2.5/0013.png)
+
+- Click **Create database**
+
+  ![](/images/2.5/0014.png)
+
+---

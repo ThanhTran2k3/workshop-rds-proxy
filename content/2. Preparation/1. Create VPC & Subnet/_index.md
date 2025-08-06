@@ -1,6 +1,6 @@
 ---
 title : "Create VPC and Subnet"
-date : 2025-07-03
+date : 2025-08-07
 weight : 1
 chapter : false
 pre : " <b> 2.1 </b> "
@@ -12,18 +12,7 @@ Amazon Virtual Private Cloud (Amazon VPC) allows you to launch AWS resources in 
 
 ---
 
-### ✅ Goal
-
-Create a new VPC with the following network structure:
-
-| Subnet Name       | CIDR           | Purpose                          |
-|-------------------|----------------|----------------------------------|
-| PublicSubnet1     | 10.0.1.0/24    | For ALB and NAT Gateway          |
-| PrivateSubnet1    | 10.0.2.0/24    | For ECS Tasks, RDS, RDS Proxy    |
-
----
-
-### 🛠️ Step-by-Step Instructions
+### 🛠️ Steps to Implement
 
 #### 1️. Access AWS Management Console
 
@@ -83,8 +72,8 @@ Create a new VPC with the following network structure:
 - Go to **VPC Dashboard** > select **Subnets**
 - Click **Create subnet**
    ![](/images/2.1/0008.png) 
-- Under **VPC ID**, select **MyApp-VPC**
 - Fill in the details:
+    - **VPC ID**, select **MyApp-VPC**
     - **Subnet name**: `PublicSubnet1`
     - **Availability Zone**: Choose any (e.g., `ap-southeast-1a`)
     - **IPv4 CIDR block**: `10.0.1.0/24`
@@ -98,8 +87,8 @@ Create a new VPC with the following network structure:
 - Go to **VPC Dashboard** > select **Subnets**
 - Click **Create subnet**
    ![](/images/2.1/0008.png) 
-- Under **VPC ID**, select **MyApp-VPC**
 - Fill in the details:
+    - **VPC ID**, select **MyApp-VPC**
     - **Subnet name**: `PrivateSubnet1`
     - **Availability Zone**: Choose any (e.g., `ap-southeast-1b`)
     - **IPv4 CIDR block**: `10.0.2.0/24`
@@ -109,12 +98,12 @@ Create a new VPC with the following network structure:
 
 ---
 
-##### 4.3 Create PrivateSubnet1
+##### 4.3 Create PrivateSubnet2
 - Go to **VPC Dashboard** > select **Subnets**
 - Click **Create subnet**
    ![](/images/2.1/0008.png) 
-- Under **VPC ID**, select **MyApp-VPC**
 - Fill in the details:
+    - **VPC ID**, select **MyApp-VPC**
     - **Subnet name**: `PrivateSubnet2`
     - **Availability Zone**: Choose any (e.g., `ap-southeast-1b`)
     - **IPv4 CIDR block**: `10.0.3.0/24`

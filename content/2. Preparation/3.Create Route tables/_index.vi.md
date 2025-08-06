@@ -1,6 +1,6 @@
 ---
 title : "Tạo Route Table"
-date :  2025-07-03
+date : 2025-08-07
 weight : 3
 chapter : false
 pre : " <b> 2.3 </b> "
@@ -10,12 +10,12 @@ pre : " <b> 2.3 </b> "
 
 #### 1. Tạo Route Table cho Public Subnet
 
-- Vào **VPC Dashboard** > **Route Tables**
+- Vào **VPC Dashboard** > chọn **Route Tables**
 - Nhấn **Create route table**
 
   ![](/images/2.3/0001.png) 
     
-- Nhập:
+- Nhập thông tin:
   - **Name tag**: `MyApp-Public-RT`
   - Nhấn **VPC**: chọn `MyApp-VPC`
 - Nhấn **Create route table**
@@ -39,7 +39,7 @@ pre : " <b> 2.3 </b> "
 
   ![](/images/2.3/0006.png) 
     
-  - Click chọn **PublicSubnet1**
+  - Click chọn **PublicSubnet1** và **PublicSubnet2**
   - Nhấn **Save associations**
 
   ![](/images/2.3/0007.png) 
@@ -53,7 +53,7 @@ pre : " <b> 2.3 </b> "
 
   ![](/images/2.3/0001.png) 
 
-- Nhập:
+- Nhập thông tin:
   - **Name tag**: `MyApp-Private-RT`
   - Nhấn **VPC**: chọn `MyApp-VPC`
 - Nhấn **Create route table**
@@ -77,7 +77,7 @@ pre : " <b> 2.3 </b> "
 
   ![](/images/2.3/0012.png) 
 
-  - Click chọn các **PrivateSubnet1**, **PrivateSubnet2**
+  - Click chọn **PrivateSubnet1** và **PrivateSubnet2**
   - Nhấn **Save associations**
 
   ![](/images/2.3/0013.png) 

@@ -1,6 +1,6 @@
 ---
 title : "Cấu hình Internet Gateway & NAT Gateway"
-date :  2025-07-03
+date : 2025-08-07
 weight : 2
 chapter : false
 pre : " <b> 2.2 </b> "
@@ -12,14 +12,22 @@ pre : " <b> 2.2 </b> "
 
 - Vào **VPC Dashboard** > chọn **Internet Gateways**
 - Nhấn **Create internet gateway**
+
   ![](/images/2.2/0001.png) 
-- Nhập:
+
+- Nhập thông tin:
   - **Name tag**: `MyApp-IGW`
+
 - Nhấn **Create internet gateway**
+
   ![](/images/2.2/0002.png) 
-- Sau khi tạo xong, chọn **MyApp-IGW** > nhấn **Actions** > **Attach to VPC**
+
+- Sau khi tạo xong, chọn **MyApp-IGW** > nhấn **Actions** > chọn **Attach to VPC**
+
   ![](/images/2.2/0003.png) 
+
 - Chọn **MyApp-VPC** > nhấn **Attach internet gateway**
+
   ![](/images/2.2/0004.png) 
   
 
@@ -30,16 +38,21 @@ pre : " <b> 2.2 </b> "
 
 #### 2. Tạo NAT Gateway
 
-- Vào **VPC Dashboard** > **NAT Gateways**
+- Vào **VPC Dashboard** > chọn **NAT Gateways**
 - Nhấn **Create NAT Gateway**
+
    ![](/images/2.2/0005.png) 
-- Nhập:
+
+- Nhập thông tin:
   - **Name**: `MyApp-NAT`
   - Nhấn **Subnet**: chọn **PublicSubnet1**
   - **Elastic IP allocation ID**: chọn **Allocate Elastic IP**
 - Nhấn **Create NAT Gateway**
+
     ![](/images/2.2/0006.png) 
+
     ![](/images/2.2/0007.png) 
+
 
 📌 **Giải thích:**
 - NAT Gateway giúp các subnet private truy cập Internet (ví dụ: để cập nhật hệ thống, tải package).

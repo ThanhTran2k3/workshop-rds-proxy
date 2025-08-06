@@ -1,6 +1,6 @@
 ---
 title : "Tạo VPC và Subnet"
-date :  2025-07-03
+date : 2025-08-07
 weight : 1
 chapter : false
 pre : " <b> 2.1 </b> "
@@ -9,17 +9,6 @@ pre : " <b> 2.1 </b> "
 ### Amazon Virtual Private Cloud (VPC)
 
 Amazon Virtual Private Cloud (Amazon VPC) cho phép bạn triển khai tài nguyên AWS trong một mạng logic biệt lập mà bạn tự định nghĩa. Nó hoạt động như một trung tâm dữ liệu ảo trong đám mây.
-
----
-
-### ✅Mục tiêu
-
-Tạo một VPC mới với sơ đồ mạng như sau:
-
-| Tên subnet       | CIDR           | Vai trò                         |
-|------------------|----------------|----------------------------------|
-| PublicSubnet1    | 10.0.1.0/24    | Chạy ALB, NAT Gateway            |
-| PrivateSubnet1   | 10.0.2.0/24    | Chạy ECS Task, RDS, RDS Proxy    |
 
 ---
 
@@ -83,10 +72,10 @@ Tạo một VPC mới với sơ đồ mạng như sau:
 - Vào **VPC Dashboard** > chọn **Subnets**
 - Nhấn **Create subnet**
    ![](/images/2.1/0008.png) 
-- Nhấn **VPC ID** > chọn **MyApp-VPC**
 - Nhập thông tin:
+    - **VPC ID** > chọn **MyApp-VPC**
     - **Subnet name**: `PublicSubnet1`
-    - Nhấn **Availability Zone**  > chọn bất kỳ **(VD: `ap-southeast-1a`)**
+    - Nhấn **Availability Zone**  > chọn **ap-southeast-1a**
     - **IPv4 subnet CIDR block**: `10.0.1.0/24`
 - Nhấn **Create subnet**
    ![](/images/2.1/0009.png) 
@@ -94,41 +83,45 @@ Tạo một VPC mới với sơ đồ mạng như sau:
 
 ---
 
-##### 4.2 Tạo PrivateSubnet1
+##### 4.2 Tạo PublicSubnet2
 - Vào **VPC Dashboard** > chọn **Subnets**
 - Nhấn **Create subnet**
    ![](/images/2.1/0008.png) 
-- Nhấn **VPC ID** > chọn **MyApp-VPC**
 - Nhập thông tin:
+    - **VPC ID** > chọn **MyApp-VPC**
+    - **Subnet name**: `PublicSubnet2`
+    - Nhấn **Availability Zone**  > chọn **ap-southeast-1b**
+    - **IPv4 subnet CIDR block**: `10.0.4.0/24`
+- Nhấn **Create subnet**
+   ![](/images/2.1/0013.png) 
+   ![](/images/2.1/0014.png) 
+
+---
+
+##### 4.3 Tạo PrivateSubnet1
+- Vào **VPC Dashboard** > chọn **Subnets**
+- Nhấn **Create subnet**
+   ![](/images/2.1/0008.png) 
+- Nhập thông tin:
+    - **VPC ID** > chọn **MyApp-VPC**
     - **Subnet name**: `PrivateSubnet1`
-    - Nhấn **Availability Zone**  > chọn bất kỳ **(VD: `ap-southeast-1b`)**
+    - Nhấn **Availability Zone**  > chọn **ap-southeast-1b**
     - **IPv4 subnet CIDR block**: `10.0.2.0/24`
 - Nhấn **Create subnet**
    ![](/images/2.1/0011.png) 
    ![](/images/2.1/0012.png) 
 
-##### 4.3 Tạo PrivateSubnet2
+##### 4.4 Tạo PrivateSubnet2
 - Vào **VPC Dashboard** > chọn **Subnets**
 - Nhấn **Create subnet**
    ![](/images/2.1/0008.png) 
-- Nhấn **VPC ID** > chọn **MyApp-VPC**
 - Nhập thông tin:
+    - **VPC ID** > chọn **MyApp-VPC**
     - **Subnet name**: `PrivateSubnet2`
-    - Nhấn **Availability Zone**  > chọn bất kỳ khác với **PrivateSubnet1** **(VD: `ap-southeast-1c`)**
+    - Nhấn **Availability Zone**  > chọn **ap-southeast-1c**
     - **IPv4 subnet CIDR block**: `10.0.3.0/24`
 - Nhấn **Create subnet**
    ![](/images/2.1/0015.png) 
    ![](/images/2.1/0016.png) 
-
----
-
-### ✅ Kết quả đạt được
-
-- Tạo được một VPC tên `MyApp-VPC` với CIDR `10.0.0.0/16`
-   ![](/images/2.1/0013.png) 
-- Tạo 1 subnet công khai `PublicSubnet1` dùng cho ALB và NAT Gateway
-- Tạo 2 subnet riêng tư `PrivateSubnet1`, `PrivateSubnet2` dùng cho ECS, RDS, RDS Proxy
-
-   ![](/images/2.1/0014.png) 
 
 ---

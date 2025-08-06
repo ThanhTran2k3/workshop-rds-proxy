@@ -1,6 +1,6 @@
 ---
 title : "Tạo Secrets Manager"
-date :  2025-07-03
+date : 2025-08-07
 weight : 6
 chapter : false
 pre : " <b> 2.6 </b> "
@@ -8,37 +8,66 @@ pre : " <b> 2.6 </b> "
 
 ### 🛠️ Các bước thực hiện
 
-#### 1️. Truy cập AWS Management Console
+#### 1. Mở dịch vụ Secrets Manager
 
-- Truy cập [AWS Management Console](https://console.aws.amazon.com/)
+- Tìm kiếm và chọn dịch vụ **Secrets Manager**
 
-   ![](/images/2.1/0001.png)
-
-- Tìm và chọn dịch vụ **Secrets Manager**
-
-   ![](/images/2.1/0002.png)
-
-- Nhấn chọn **Store a new secret**
+  ![](/images/2.6/0001.png)
 
 ---
 
-#### 2. Chọn loại secret
+#### 2. Tạo Secrets
 
-- Tại bước **Choose secret type**:
-  - Chọn **Credentials for RDS database**
-  - Nhập thông tin đăng nhập cho database:
-    - **Username**: `admin`
+- Vào **AWS Secrets Manager** > chọn **Secrets**
+- Nhấn **Store a new secret**
+
+  ![](/images/2.6/0002.png)
+
+- Bước **Choose secret type**:
+  - **Secret type** > chọn **Credentials for RDS database**
+  - Phần **Credentials**:
+    - **User name**: `admin`
     - **Password**: `your-password`
 
-✅ **Hoặc** chọn **Other type of secrets** và nhập thủ công dữ liệu JSON:
+  ![](/images/2.6/0003.png)
 
-```json
-{
-  "username": "admin",
-  "password": "your-password"
-}
-```
+    ✅ **Hoặc** chọn **Other type of secrets** và nhập thủ công dữ liệu JSON:
+
+    ```json
+    {
+      "username": "admin",
+      "password": "your-password"
+    }
+    ```
+  - Phần **Database** > chọn **MyApp-RDS**
+
+  - Nhấn **Next** để tiếp tục
+
+  ![](/images/2.6/0004.png)
 
 ---
 
-#### 3. Chọn loại secret
+- Bước **Configure secret**:
+  - **Secret name**: `MyAPP-Secret`
+  - **Description**: `MySQL database credentials`
+
+  ![](/images/2.6/0005.png)
+
+  - Nhấn **Next** để tiếp tục
+
+  ![](/images/2.6/0006.png)
+
+---
+
+- Bước **Configure rotation**:
+  - Nhấn **Next** để tiếp tục
+
+  ![](/images/2.6/0007.png)
+---
+
+- Bước **Review**:
+  - Nhấn **Store** để tạo
+
+  ![](/images/2.6/0008.png)
+
+---

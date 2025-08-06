@@ -1,12 +1,12 @@
 ---
-title : "Tạo RDS Database"
-date :  2025-07-03
+title : "Tạo RDS database instance"
+date : 2025-08-07
 weight : 5
 chapter : false
 pre : " <b> 2.5 </b> "
 ---
 
-### 🛠️ Bước 4: Tạo RDS Database (MySQL)
+### 🛠️ Các bước thực hiện
 
 #### 1. Mở dịch vụ RDS
 
@@ -38,68 +38,60 @@ pre : " <b> 2.5 </b> "
 ---
 
 #### 2. Tạo database
-- Trong RDS Dashboard, chọn **Create database**
+
+- Vào **Aurora and RDS** > chọn **Databases**
+- Nhấn **Create database**
+
+  ![](/images/2.5/0005.png)
+
+- Nhập thông tin:
+    - **Choose a database creation method** > chọn **Standard create**
+    - Phần **Engine options**:
+      - **Engine type**> chọn **MySQL**
+
+    ![](/images/2.5/0006.png)
+
+    - Phần **Templates** > chọn **Dev/Test**
+
+    ![](/images/2.5/0007.png)
+
+    - Phần **Availability and durability**:
+      - **Deployment options** > chọn **Multi-AZ DB instance deployment (2 instances)**
+
+    ![](/images/2.5/0008.png)
+
+    - Phần **Settings**:
+      - **DB instance identifier**: `MyApp-RDS`
+      - **Master username**: `admin`
+      - **Credentials management** > chọn **Self managed**
+      - **Master password** tự đặt
+
+    ![](/images/2.5/0009.png)
+
+    - Phần **Instance configuration**:
+      - **DB instance class**> chọn **Burstable classes (includes t classes)** > chọn **db.t3.micro**
+    
+    ![](/images/2.5/0010.png)
+
+    - Phần **Storage**:
+      - **Storage type**> chọn **General Purpose SSD (gp2)**
+      - **Allocated storage**: `20`
+    
+    ![](/images/2.5/0011.png)
+
+    - Phần **Connectivity**:
+      - **Compute resource**> chọn **Don’t connect to an EC2 compute resource**
+      - **Virtual private cloud (VPC)**> chọn **MyApp-VPC**
+      - **DB subnet group**> chọn **MyApp-RDSSG**
+      - **Existing VPC security groups**> chọn **SG-RDS**
+
+    ![](/images/2.5/0012.png)
+
+    ![](/images/2.5/0013.png)
+
+- Nhấn **Create database**  
+
+    ![](/images/2.5/0014.png)
 
 ---
 
-#### 3. Chọn phương thức tạo database
-- **Engine options**:
-  - Chọn **Standard Create**
-- **Engine type**:
-  - Chọn **MySQL**
-- **Version**:
-  - Chọn phiên bản phù hợp, ví dụ: `MySQL 8.0.35`
-
----
-
-#### 4. Cấu hình thông tin database
-- **Templates**:
-  - Chọn `Dev/Test` (hoặc `Production` nếu cần HA)
-- **DB instance identifier**:
-  - Nhập tên ví dụ: `myapp-mysql-db`
-- **Master username**:
-  - Mặc định: `admin`
-- **Master password**:
-  - Nhập password và xác nhận
-
----
-
-#### 5. Cấu hình instance
-- **DB instance class**:
-  - Chọn `db.t3.micro` (cho free-tier hoặc nhỏ gọn)
-- **Storage**:
-  - Chọn loại: `General Purpose (SSD)`
-  - Dung lượng: Ví dụ `20 GiB`
-
----
-
-#### 6. Connectivity
-- **Virtual Private Cloud (VPC)**:
-  - Chọn VPC đã tạo: `MyApp-VPC`
-- **Subnet group**:
-  - Chọn nhóm chứa subnet **PrivateSubnet1**
-- **Public access**:
-  - Chọn **No** (vì nằm trong subnet private)
-- **VPC security group**:
-  - Chọn `SG-RDS` (đã tạo trước đó)
-
----
-
-#### 7. Cấu hình tùy chọn nâng cao
-- **Database authentication**:
-  - Tick **Enable IAM DB authentication** (tuỳ chọn)
-- **Initial database name**:
-  - Nhập tên DB nếu muốn tự tạo trước, ví dụ: `myappdb`
-
----
-
-#### 8. Tạo DB
-- Cuối trang, nhấn **Create database**
-
----
-
-#### 9. Kiểm tra trạng thái
-- Chờ vài phút, khi trạng thái `Available`, database đã sẵn sàng
-- Nhấn vào DB để xem **Endpoint**, **Port**, sử dụng kết nối từ ECS
-
----
