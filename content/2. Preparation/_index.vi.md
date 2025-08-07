@@ -1,5 +1,5 @@
 ---
-title : "Chuẩn Bị"
+title : "Chuẩn bị"
 date : 2025-08-07
 weight : 2
 chapter : false

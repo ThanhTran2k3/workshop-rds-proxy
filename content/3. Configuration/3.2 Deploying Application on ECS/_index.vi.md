@@ -27,10 +27,8 @@ pre : " <b> 3.2 </b> "
 
   - Truy cập [AWS Aurora and RDS](https://console.aws.amazon.com/rds/)
     - Chọn **Proxies** > Mở **MyApp-RDS-Proxy**
-    - Ghi nhớ giá trị **Proxy Amazon Resource Name (ARN)** cho **DB_PROXY_HOST**
+    - Ghi nhớ giá trị **Proxy endpoints** cho **DB_PROXY_HOST**
 
-  ![](/images/3.2/0009.png)
-  
   - Truy cập [AWS Secrets Manager](https://console.aws.amazon.com/secretsmanager/)
     - Chọn **MyAPP-Secret** 
     - Ghi nhớ giá trị **Secret ARN** cho **DB_USER** và **DB_PASS**

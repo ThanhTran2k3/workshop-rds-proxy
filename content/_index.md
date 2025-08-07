@@ -1,8 +1,8 @@
 ---
 title: "Amazon RDS Proxy"
-date : 2025-08-07
-draft : false
-categories : ["AWS Services", "Database Optimization"]
+date: 2025-08-07
+weight : 1 
+chapter : false
 ---
 
 # Amazon Relational Database Service Proxy (Amazon RDS Proxy) 

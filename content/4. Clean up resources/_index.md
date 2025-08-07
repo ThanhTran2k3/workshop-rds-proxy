@@ -1,5 +1,5 @@
 ---
-title : "Clean Up Resources"
+title : "Clean up resources"
 date : 2025-08-07
 weight : 4
 chapter : false

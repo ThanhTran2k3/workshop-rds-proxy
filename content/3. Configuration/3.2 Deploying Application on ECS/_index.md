@@ -27,9 +27,7 @@ pre : " <b> 3.2 </b> "
 
   - Go to [AWS Aurora and RDS](https://console.aws.amazon.com/rds/)
     - Select **Proxies** > Open **MyApp-RDS-Proxy**
-    - Note the **Proxy Amazon Resource Name (ARN)** for **DB_PROXY_HOST**
-
-  ![](/images/3.2/0009.png)
+    - Note the **Proxy endpoints** for **DB_PROXY_HOST**
   
   - Go to [AWS Secrets Manager](https://console.aws.amazon.com/secretsmanager/)
     - Select **MyAPP-Secret** 
