@@ -2,249 +2,249 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/</loc>
+    <loc>/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/"
+                href="/vi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/"
+                href="/"
                 />
   </url><url>
-    <loc>//localhost:1313/3.-configuration/3.1-create-application-load-balancer/</loc>
+    <loc>/3.-configuration/3.1-create-application-load-balancer/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3.-configuration/3.1-create-application-load-balancer/"
+                href="/vi/3.-configuration/3.1-create-application-load-balancer/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3.-configuration/3.1-create-application-load-balancer/"
+                href="/3.-configuration/3.1-create-application-load-balancer/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/1.-create-vpc--subnet/</loc>
+    <loc>/2.-preparation/1.-create-vpc--subnet/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/1.-create-vpc--subnet/"
+                href="/vi/2.-preparation/1.-create-vpc--subnet/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/1.-create-vpc--subnet/"
+                href="/2.-preparation/1.-create-vpc--subnet/"
                 />
   </url><url>
-    <loc>//localhost:1313/1.-introduction/</loc>
+    <loc>/1.-introduction/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/1.-introduction/"
+                href="/vi/1.-introduction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/1.-introduction/"
+                href="/1.-introduction/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/2.-cretae-internet-gateway--nat-gateway/</loc>
+    <loc>/2.-preparation/2.-cretae-internet-gateway--nat-gateway/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/2.-cretae-internet-gateway--nat-gateway/"
+                href="/vi/2.-preparation/2.-cretae-internet-gateway--nat-gateway/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/2.-cretae-internet-gateway--nat-gateway/"
+                href="/2.-preparation/2.-cretae-internet-gateway--nat-gateway/"
                 />
   </url><url>
-    <loc>//localhost:1313/3.-configuration/3.2-deploying-application-on-ecs/</loc>
+    <loc>/3.-configuration/3.2-deploying-application-on-ecs/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3.-configuration/3.2-deploying-application-on-ecs/"
+                href="/vi/3.-configuration/3.2-deploying-application-on-ecs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3.-configuration/3.2-deploying-application-on-ecs/"
+                href="/3.-configuration/3.2-deploying-application-on-ecs/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/</loc>
+    <loc>/2.-preparation/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/"
+                href="/vi/2.-preparation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/"
+                href="/2.-preparation/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/3.create-route-tables/</loc>
+    <loc>/2.-preparation/3.create-route-tables/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/3.create-route-tables/"
+                href="/vi/2.-preparation/3.create-route-tables/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/3.create-route-tables/"
+                href="/2.-preparation/3.create-route-tables/"
                 />
   </url><url>
-    <loc>//localhost:1313/3.-configuration/3.3-deploying-a-static-website/</loc>
+    <loc>/3.-configuration/3.3-deploying-a-static-website/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3.-configuration/3.3-deploying-a-static-website/"
+                href="/vi/3.-configuration/3.3-deploying-a-static-website/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3.-configuration/3.3-deploying-a-static-website/"
+                href="/3.-configuration/3.3-deploying-a-static-website/"
                 />
   </url><url>
-    <loc>//localhost:1313/3.-configuration/</loc>
+    <loc>/3.-configuration/</loc>
     <lastmod>2025-07-03T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3.-configuration/"
+                href="/vi/3.-configuration/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3.-configuration/"
+                href="/3.-configuration/"
                 />
   </url><url>
-    <loc>//localhost:1313/4.-clean-up-resources/</loc>
+    <loc>/4.-clean-up-resources/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4.-clean-up-resources/"
+                href="/vi/4.-clean-up-resources/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4.-clean-up-resources/"
+                href="/4.-clean-up-resources/"
                 />
   </url><url>
-    <loc>//localhost:1313/3.-configuration/3.4-configure-cloudfront/</loc>
+    <loc>/3.-configuration/3.4-configure-cloudfront/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3.-configuration/3.4-configure-cloudfront/"
+                href="/vi/3.-configuration/3.4-configure-cloudfront/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3.-configuration/3.4-configure-cloudfront/"
+                href="/3.-configuration/3.4-configure-cloudfront/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/4.-create-security-groups/</loc>
+    <loc>/2.-preparation/4.-create-security-groups/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/4.-create-security-groups/"
+                href="/vi/2.-preparation/4.-create-security-groups/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/4.-create-security-groups/"
+                href="/2.-preparation/4.-create-security-groups/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/5.-create-rds-instance/</loc>
+    <loc>/2.-preparation/5.-create-rds-instance/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/5.-create-rds-instance/"
+                href="/vi/2.-preparation/5.-create-rds-instance/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/5.-create-rds-instance/"
+                href="/2.-preparation/5.-create-rds-instance/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/6.-create-secrets-manager/</loc>
+    <loc>/2.-preparation/6.-create-secrets-manager/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/6.-create-secrets-manager/"
+                href="/vi/2.-preparation/6.-create-secrets-manager/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/6.-create-secrets-manager/"
+                href="/2.-preparation/6.-create-secrets-manager/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/7.-create-iam-role/</loc>
+    <loc>/2.-preparation/7.-create-iam-role/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/7.-create-iam-role/"
+                href="/vi/2.-preparation/7.-create-iam-role/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/7.-create-iam-role/"
+                href="/2.-preparation/7.-create-iam-role/"
                 />
   </url><url>
-    <loc>//localhost:1313/2.-preparation/8.-create-rds-proxy/</loc>
+    <loc>/2.-preparation/8.-create-rds-proxy/</loc>
     <lastmod>2025-08-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2.-preparation/8.-create-rds-proxy/"
+                href="/vi/2.-preparation/8.-create-rds-proxy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2.-preparation/8.-create-rds-proxy/"
+                href="/2.-preparation/8.-create-rds-proxy/"
                 />
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/categories/"
+                href="/vi/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/categories/"
+                href="/categories/"
                 />
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/tags/"
+                href="/vi/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/tags/"
+                href="/tags/"
                 />
   </url>
 </urlset>

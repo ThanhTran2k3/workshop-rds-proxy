@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Create Security Groups on Create a new AWS account.</title>
-    <link>//localhost:1313/2.-preparation/4.-create-security-groups/</link>
+    <link>/2.-preparation/4.-create-security-groups/</link>
     <description>Recent content in Create Security Groups on Create a new AWS account.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="//localhost:1313/2.-preparation/4.-create-security-groups/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/2.-preparation/4.-create-security-groups/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
