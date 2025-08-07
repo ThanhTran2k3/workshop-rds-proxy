@@ -51,4 +51,5 @@ identifier = "AWS Study Group FB"
 url = "https://www.facebook.com/groups/awsstudygroupfcj"
 weight = 20
 
-baseURL = "https://thanhtran.github.io/rds-proxy/"
+baseURL = "https://thanhtran2k3.github.io/workshop-rds-proxy/"
+publishDir = "public"
