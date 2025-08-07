@@ -1,6 +1,8 @@
 # Change the default theme to be use when building the site with Hugo
+baseURL = "https://thanhtran2k3.github.io/workshop-rds-proxy/"
+publishDir = "public"
 theme = "hugo-theme-learn"
-
+canonifyURLs = true
 # For search functionality
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
