@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tạo IAM Role on Tạo mới tài khoản AWS</title><link>https://thanhtran2k3.github.io/workshop-rds-proxy/vi/2.-preparation/7.-create-iam-role/</link><description>Recent content in Tạo IAM Role on Tạo mới tài khoản AWS</description><generator>Hugo</generator><language>vi</language><lastBuildDate/><atom:link href="https://thanhtran2k3.github.io/workshop-rds-proxy/vi/2.-preparation/7.-create-iam-role/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tạo IAM Role on Database Connection Pooling và RDS Proxy</title>
+    <link>http://localhost:1313/workshop-rds-proxy/vi/2.-preparation/7.-create-iam-role/</link>
+    <description>Recent content in Tạo IAM Role on Database Connection Pooling và RDS Proxy</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:1313/workshop-rds-proxy/vi/2.-preparation/7.-create-iam-role/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

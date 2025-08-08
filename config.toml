@@ -20,7 +20,7 @@ home = [ "HTML", "RSS", "JSON"]
   
 [Languages]
 [Languages.en]
-title = "Create a new AWS account."
+title = "Database Connection Pooling and RDS Proxy."
 weight = 1
 languageName = "English"
 
@@ -37,7 +37,7 @@ url = "https://www.facebook.com/groups/awsstudygroupfcj"
 weight = 20
 
 [Languages.vi]
-title = "Tạo mới tài khoản AWS"
+title = "Database Connection Pooling và RDS Proxy"
 weight = 2
 languageName = "Tiếng Việt"
 

@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Create Application Load Balancer on Create a new AWS account.</title><link>https://thanhtran2k3.github.io/workshop-rds-proxy/3.-configuration/3.1-create-application-load-balancer/</link><description>Recent content in Create Application Load Balancer on Create a new AWS account.</description><generator>Hugo</generator><language>en</language><lastBuildDate/><atom:link href="https://thanhtran2k3.github.io/workshop-rds-proxy/3.-configuration/3.1-create-application-load-balancer/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Create Application Load Balancer on Database Connection Pooling and RDS Proxy.</title>
+    <link>http://localhost:1313/workshop-rds-proxy/3.-configuration/3.1-create-application-load-balancer/</link>
+    <description>Recent content in Create Application Load Balancer on Database Connection Pooling and RDS Proxy.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:1313/workshop-rds-proxy/3.-configuration/3.1-create-application-load-balancer/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
